@@ -1,0 +1,25 @@
+from Art import logo9
+print(logo9)
+print("Welcome to the secret auction program.")
+should_continue = True
+bid_dictionary = {}
+
+def find_highest_bidder(bidding_record):
+    highest_price = 0
+    winner = ""
+    for user in bidding_record:
+        bid_amount = bidding_record[user]
+        if bid_amount > highest_price:
+            highest_price = bid_amount
+            winner = user
+    print(f"The winner is {winner} with a bid of ${highest_price}")
+
+while should_continue:
+    user_name = input("What is your name?: ")
+    user_price = int(input("What's your bid?: $"))
+    bid_dictionary[user_name] = user_price
+    other_user = input("Are there any other bidders? Type 'yes' or 'no'. ")
+    if other_user == "no":
+        should_continue = False
+        print(logo9)
+        find_highest_bidder(bid_dictionary)
